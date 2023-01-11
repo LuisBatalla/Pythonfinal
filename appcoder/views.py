@@ -20,12 +20,12 @@ def about(request):
 class PostDetalle(DetailView):
     model = Post
 
-class PostListar(LoginRequiredMixin, ListView):
+class PostListar(ListView):
     model = Post  
 
-class PostCrear(CreateView):
+class PostCrear(LoginRequiredMixin, CreateView):
     model = Post
-    success_url = "/appcoder/listar"
+    success_url = reverse_lazy("appcoder-listar")
     fields = '__all__'
 
 class PostBorrar(LoginRequiredMixin, DeleteView):
